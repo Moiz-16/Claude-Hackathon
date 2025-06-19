@@ -351,6 +351,146 @@
             justify-content: center;
         }
 
+        .filters-section {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(33, 150, 243, 0.2);
+        }
+
+        .filters-section h3 {
+            color: #1565c0;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .filter-row {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-group {
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .filter-group label {
+            display: block;
+            margin-bottom: 0.25rem;
+            color: #1565c0;
+            font-weight: 500;
+            font-size: 0.8rem;
+        }
+
+        .filter-group select,
+        .filter-group input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #90caf9;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            background: white;
+        }
+
+        .filter-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .btn-small {
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .btn-filter {
+            background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+            color: white;
+        }
+
+        .btn-clear {
+            background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+            color: white;
+        }
+
+        .btn-small:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .charts-section {
+            background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(156, 39, 176, 0.2);
+        }
+
+        .charts-section h3 {
+            color: #7b1fa2;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .chart-container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            height: 200px;
+            position: relative;
+        }
+
+        .chart-container:last-child {
+            margin-bottom: 0;
+        }
+
+        .chart-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #4a148c;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .analytics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .analytics-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid rgba(156, 39, 176, 0.1);
+        }
+
+        .analytics-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #7b1fa2;
+            margin-bottom: 0.25rem;
+        }
+
+        .analytics-label {
+            font-size: 0.8rem;
+            color: #6a1b9a;
+            font-weight: 500;
+        }
+
         @media (max-width: 768px) {
             .container {
                 flex-direction: column;
@@ -398,6 +538,72 @@
                 <div class="stat-item">
                     <span class="stat-label">This Week:</span>
                     <span class="stat-value" id="weekSightings">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Filtered:</span>
+                    <span class="stat-value" id="filteredSightings">0</span>
+                </div>
+            </div>
+
+            <div class="filters-section">
+                <h3>🔍 Advanced Filters</h3>
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <label for="dateFrom">From Date:</label>
+                        <input type="date" id="dateFrom">
+                    </div>
+                    <div class="filter-group">
+                        <label for="dateTo">To Date:</label>
+                        <input type="date" id="dateTo">
+                    </div>
+                </div>
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <label for="filterCount">Canister Count:</label>
+                        <select id="filterCount">
+                            <option value="">All counts</option>
+                            <option value="1-5">1-5 canisters</option>
+                            <option value="6-10">6-10 canisters</option>
+                            <option value="11-20">11-20 canisters</option>
+                            <option value="20+">20+ canisters</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="filterCondition">Condition:</label>
+                        <select id="filterCondition">
+                            <option value="">All conditions</option>
+                            <option value="scattered">Scattered on ground</option>
+                            <option value="dumped">Dumped in pile</option>
+                            <option value="binned">Near bins/disposal</option>
+                            <option value="vehicle">Near vehicle</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="filter-actions">
+                    <button class="btn-small btn-filter" id="applyFilters">Apply Filters</button>
+                    <button class="btn-small btn-clear" id="clearFilters">Clear All</button>
+                </div>
+            </div>
+
+            <div class="charts-section">
+                <h3>📈 Data Analytics</h3>
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <div class="analytics-number" id="avgCanisters">0</div>
+                        <div class="analytics-label">Avg Canisters</div>
+                    </div>
+                    <div class="analytics-card">
+                        <div class="analytics-number" id="hotspotCount">0</div>
+                        <div class="analytics-label">Hotspots</div>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <div class="chart-title">Sightings Over Time</div>
+                    <canvas id="timeChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <div class="chart-title">Condition Breakdown</div>
+                    <canvas id="conditionChart"></canvas>
                 </div>
             </div>
 
@@ -492,21 +698,32 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
     <script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         class NitrousTracker {
             constructor() {
                 this.sightings = [];
+                this.filteredSightings = [];
                 this.map = null;
                 this.selectedLatLng = null;
                 this.markers = [];
                 this.markerClusterGroup = null;
                 this.heatmapLayer = null;
                 this.currentView = 'markers';
+                this.charts = {};
+                this.filters = {
+                    dateFrom: null,
+                    dateTo: null,
+                    canisterCount: '',
+                    condition: ''
+                };
                 
                 this.initMap();
                 this.initEventListeners();
                 this.loadSightings();
+                this.generateTestData();
                 this.updateStats();
+                this.initCharts();
             }
 
             initMap() {
@@ -558,6 +775,15 @@
                     radio.addEventListener('change', (e) => {
                         this.changeMapView(e.target.value);
                     });
+                });
+
+                // Filter controls
+                document.getElementById('applyFilters').addEventListener('click', () => {
+                    this.applyFilters();
+                });
+
+                document.getElementById('clearFilters').addEventListener('click', () => {
+                    this.clearFilters();
                 });
             }
 
@@ -753,8 +979,9 @@
             }
 
             showHeatmap() {
-                if (this.sightings.length > 0) {
-                    const heatmapData = this.sightings.map(sighting => {
+                const dataToUse = this.filteredSightings.length > 0 ? this.filteredSightings : this.sightings;
+                if (dataToUse.length > 0) {
+                    const heatmapData = dataToUse.map(sighting => {
                         // Weight based on canister count
                         let weight = 1;
                         if (sighting.canisterCount === '6-10') weight = 2;
@@ -790,6 +1017,7 @@
                 document.getElementById('totalSightings').textContent = this.sightings.length;
                 document.getElementById('todaySightings').textContent = todayCount;
                 document.getElementById('weekSightings').textContent = weekCount;
+                document.getElementById('filteredSightings').textContent = this.filteredSightings.length;
             }
 
             updateRecentSightings() {
@@ -833,11 +1061,117 @@
                 }
             }
 
+            generateTestData() {
+                // Only generate if no existing data
+                if (this.sightings.length > 0) return;
+
+                const testData = [];
+                const conditions = ['scattered', 'dumped', 'binned', 'vehicle'];
+                const counts = ['1-5', '6-10', '11-20', '20+'];
+                
+                // Tower Hamlets hotspot coordinates (higher density)
+                const towerHamletsCoords = [
+                    [51.5067, -0.0382], [51.5078, -0.0365], [51.5045, -0.0398],
+                    [51.5089, -0.0342], [51.5034, -0.0356], [51.5098, -0.0389],
+                    [51.5056, -0.0334], [51.5076, -0.0378], [51.5023, -0.0367],
+                    [51.5087, -0.0395], [51.5045, -0.0323], [51.5069, -0.0356],
+                    [51.5092, -0.0378], [51.5034, -0.0389], [51.5078, -0.0345],
+                    [51.5056, -0.0367], [51.5089, -0.0378], [51.5067, -0.0334],
+                    [51.5098, -0.0356], [51.5045, -0.0389], [51.5076, -0.0323],
+                    [51.5034, -0.0378], [51.5087, -0.0345], [51.5069, -0.0398],
+                    [51.5092, -0.0367], [51.5056, -0.0389], [51.5078, -0.0356],
+                    [51.5067, -0.0378], [51.5045, -0.0334], [51.5089, -0.0356]
+                ];
+
+                // Other London areas (lower density)
+                const otherCoords = [
+                    [51.5074, -0.1278], [51.4994, -0.1244], [51.5154, -0.1423],
+                    [51.4923, -0.1235], [51.5321, -0.1056], [51.4834, -0.1652],
+                    [51.5234, -0.0895], [51.4567, -0.1789], [51.5456, -0.0934],
+                    [51.4789, -0.2134], [51.5123, -0.0678], [51.4634, -0.1456],
+                    [51.5345, -0.1567], [51.4891, -0.0789], [51.5012, -0.1890]
+                ];
+
+                // Generate Tower Hamlets data (60 sightings - major hotspot)
+                for (let i = 0; i < 60; i++) {
+                    const coord = towerHamletsCoords[i % towerHamletsCoords.length];
+                    const jitter = 0.002; // Small random offset
+                    const lat = coord[0] + (Math.random() - 0.5) * jitter;
+                    const lng = coord[1] + (Math.random() - 0.5) * jitter;
+                    
+                    const daysAgo = Math.floor(Math.random() * 30);
+                    const date = new Date();
+                    date.setDate(date.getDate() - daysAgo);
+                    
+                    testData.push({
+                        id: Date.now() + i,
+                        lat: lat,
+                        lng: lng,
+                        location: `${lat.toFixed(6)}, ${lng.toFixed(6)}`,
+                        canisterCount: counts[Math.floor(Math.random() * counts.length)],
+                        condition: conditions[Math.floor(Math.random() * conditions.length)],
+                        notes: this.generateRandomNote(),
+                        photo: null,
+                        timestamp: date.toISOString(),
+                        date: date.toLocaleDateString()
+                    });
+                }
+
+                // Generate other London data (25 sightings)
+                for (let i = 0; i < 25; i++) {
+                    const coord = otherCoords[i % otherCoords.length];
+                    const jitter = 0.005;
+                    const lat = coord[0] + (Math.random() - 0.5) * jitter;
+                    const lng = coord[1] + (Math.random() - 0.5) * jitter;
+                    
+                    const daysAgo = Math.floor(Math.random() * 14);
+                    const date = new Date();
+                    date.setDate(date.getDate() - daysAgo);
+                    
+                    testData.push({
+                        id: Date.now() + i + 100,
+                        lat: lat,
+                        lng: lng,
+                        location: `${lat.toFixed(6)}, ${lng.toFixed(6)}`,
+                        canisterCount: counts[Math.floor(Math.random() * counts.length)],
+                        condition: conditions[Math.floor(Math.random() * conditions.length)],
+                        notes: this.generateRandomNote(),
+                        photo: null,
+                        timestamp: date.toISOString(),
+                        date: date.toLocaleDateString()
+                    });
+                }
+
+                this.sightings = testData;
+                this.filteredSightings = [...this.sightings];
+                this.saveSightings();
+                this.sightings.forEach(sighting => this.addMarker(sighting));
+                this.updateRecentSightings();
+                this.updateMapVisualization();
+            }
+
+            generateRandomNote() {
+                const notes = [
+                    "Found near park entrance, scattered across path",
+                    "Large pile dumped behind building",
+                    "Mixed in with other litter near bus stop",
+                    "Concentrated area by vehicle parking",
+                    "Evidence of recent use, still cold to touch",
+                    "Near school grounds, concerning location",
+                    "Found early morning during clean-up walk",
+                    "Reported by local resident",
+                    "High concentration area, regular hotspot",
+                    "New area, first sighting reported here"
+                ];
+                return Math.random() < 0.7 ? notes[Math.floor(Math.random() * notes.length)] : '';
+            }
+
             loadSightings() {
                 try {
                     const saved = localStorage.getItem('nitrousSightings');
                     if (saved) {
                         this.sightings = JSON.parse(saved);
+                        this.filteredSightings = [...this.sightings];
                         this.sightings.forEach(sighting => this.addMarker(sighting));
                         this.updateRecentSightings();
                         this.updateMapVisualization();
@@ -845,7 +1179,285 @@
                 } catch (e) {
                     console.log('Could not load from localStorage, starting fresh');
                     this.sightings = [];
+                    this.filteredSightings = [];
                 }
+            }
+
+            applyFilters() {
+                this.filters.dateFrom = document.getElementById('dateFrom').value;
+                this.filters.dateTo = document.getElementById('dateTo').value;
+                this.filters.canisterCount = document.getElementById('filterCount').value;
+                this.filters.condition = document.getElementById('filterCondition').value;
+
+                this.filteredSightings = this.sightings.filter(sighting => {
+                    // Date filter
+                    if (this.filters.dateFrom) {
+                        const fromDate = new Date(this.filters.dateFrom);
+                        const sightingDate = new Date(sighting.timestamp);
+                        if (sightingDate < fromDate) return false;
+                    }
+                    
+                    if (this.filters.dateTo) {
+                        const toDate = new Date(this.filters.dateTo);
+                        toDate.setHours(23, 59, 59, 999); // End of day
+                        const sightingDate = new Date(sighting.timestamp);
+                        if (sightingDate > toDate) return false;
+                    }
+
+                    // Canister count filter
+                    if (this.filters.canisterCount && sighting.canisterCount !== this.filters.canisterCount) {
+                        return false;
+                    }
+
+                    // Condition filter
+                    if (this.filters.condition && sighting.condition !== this.filters.condition) {
+                        return false;
+                    }
+
+                    return true;
+                });
+
+                this.updateFilteredVisualization();
+                this.updateStats();
+                this.updateCharts();
+            }
+
+            clearFilters() {
+                document.getElementById('dateFrom').value = '';
+                document.getElementById('dateTo').value = '';
+                document.getElementById('filterCount').value = '';
+                document.getElementById('filterCondition').value = '';
+                
+                this.filters = {
+                    dateFrom: null,
+                    dateTo: null,
+                    canisterCount: '',
+                    condition: ''
+                };
+
+                this.filteredSightings = [...this.sightings];
+                this.updateFilteredVisualization();
+                this.updateStats();
+                this.updateCharts();
+            }
+
+            updateFilteredVisualization() {
+                this.clearMapLayers();
+                
+                // Remove all existing markers
+                this.markers.forEach(marker => {
+                    if (marker._map) {
+                        this.map.removeLayer(marker);
+                    }
+                });
+                
+                // Clear markers array and rebuild with filtered data
+                this.markers = [];
+                this.filteredSightings.forEach(sighting => {
+                    this.addMarkerForFiltered(sighting);
+                });
+                
+                this.updateMapVisualization();
+            }
+
+            addMarkerForFiltered(sighting) {
+                const intensity = this.getSightingIntensity(sighting.lat, sighting.lng);
+                let iconColor = 'green';
+                
+                if (intensity >= 6) iconColor = 'red';
+                else if (intensity >= 3) iconColor = 'orange';
+
+                const marker = L.marker([sighting.lat, sighting.lng], {
+                    icon: L.icon({
+                        iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-${iconColor}.png`,
+                        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                        iconSize: [25, 41],
+                        iconAnchor: [12, 41],
+                        popupAnchor: [1, -34],
+                        shadowSize: [41, 41]
+                    })
+                });
+
+                const popupContent = `
+                    <div style="min-width: 200px;">
+                        <h4>🎈 Nitrous Oxide Sighting</h4>
+                        <p><strong>Canisters:</strong> ${sighting.canisterCount}</p>
+                        <p><strong>Condition:</strong> ${sighting.condition}</p>
+                        <p><strong>Date:</strong> ${sighting.date}</p>
+                        ${sighting.notes ? `<p><strong>Notes:</strong> ${sighting.notes}</p>` : ''}
+                        ${sighting.photo ? `<img src="${sighting.photo}" style="width: 100%; max-width: 200px; height: auto; margin-top: 10px; border-radius: 4px;">` : ''}
+                        <p style="font-size: 0.8em; color: #666; margin-top: 10px;">Intensity: ${intensity} sighting(s) in this area</p>
+                    </div>
+                `;
+
+                marker.bindPopup(popupContent);
+                this.markers.push(marker);
+            }
+
+            initCharts() {
+                this.initTimeChart();
+                this.initConditionChart();
+                this.updateCharts();
+            }
+
+            initTimeChart() {
+                const ctx = document.getElementById('timeChart').getContext('2d');
+                this.charts.timeChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: [],
+                        datasets: [{
+                            label: 'Daily Sightings',
+                            data: [],
+                            borderColor: '#667eea',
+                            backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                            borderWidth: 2,
+                            fill: true,
+                            tension: 0.4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    stepSize: 1
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            initConditionChart() {
+                const ctx = document.getElementById('conditionChart').getContext('2d');
+                this.charts.conditionChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Scattered', 'Dumped', 'Near Bins', 'Near Vehicle'],
+                        datasets: [{
+                            data: [0, 0, 0, 0],
+                            backgroundColor: [
+                                '#ff6384',
+                                '#36a2eb',
+                                '#ffce56',
+                                '#4bc0c0'
+                            ],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    padding: 15,
+                                    usePointStyle: true,
+                                    font: {
+                                        size: 10
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            updateCharts() {
+                this.updateTimeChart();
+                this.updateConditionChart();
+                this.updateAnalytics();
+            }
+
+            updateTimeChart() {
+                // Group sightings by date
+                const dataToUse = this.filteredSightings.length > 0 ? this.filteredSightings : this.sightings;
+                const dailyCounts = {};
+                
+                dataToUse.forEach(sighting => {
+                    const date = sighting.date;
+                    dailyCounts[date] = (dailyCounts[date] || 0) + 1;
+                });
+
+                // Sort dates and get last 14 days
+                const sortedDates = Object.keys(dailyCounts).sort((a, b) => new Date(a) - new Date(b));
+                const last14Days = sortedDates.slice(-14);
+                
+                const labels = last14Days.map(date => {
+                    const d = new Date(date);
+                    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                });
+                
+                const data = last14Days.map(date => dailyCounts[date] || 0);
+
+                this.charts.timeChart.data.labels = labels;
+                this.charts.timeChart.data.datasets[0].data = data;
+                this.charts.timeChart.update();
+            }
+
+            updateConditionChart() {
+                const dataToUse = this.filteredSightings.length > 0 ? this.filteredSightings : this.sightings;
+                const conditionCounts = {
+                    'scattered': 0,
+                    'dumped': 0,
+                    'binned': 0,
+                    'vehicle': 0
+                };
+
+                dataToUse.forEach(sighting => {
+                    conditionCounts[sighting.condition] = (conditionCounts[sighting.condition] || 0) + 1;
+                });
+
+                this.charts.conditionChart.data.datasets[0].data = [
+                    conditionCounts.scattered,
+                    conditionCounts.dumped,
+                    conditionCounts.binned,
+                    conditionCounts.vehicle
+                ];
+                this.charts.conditionChart.update();
+            }
+
+            updateAnalytics() {
+                const dataToUse = this.filteredSightings.length > 0 ? this.filteredSightings : this.sightings;
+                
+                // Calculate average canisters
+                let totalCanisters = 0;
+                dataToUse.forEach(sighting => {
+                    switch(sighting.canisterCount) {
+                        case '1-5': totalCanisters += 3; break;
+                        case '6-10': totalCanisters += 8; break;
+                        case '11-20': totalCanisters += 15; break;
+                        case '20+': totalCanisters += 25; break;
+                    }
+                });
+                const avgCanisters = dataToUse.length > 0 ? Math.round(totalCanisters / dataToUse.length) : 0;
+
+                // Count hotspots (areas with 3+ sightings)
+                const hotspots = this.getHotspotCount(dataToUse);
+
+                document.getElementById('avgCanisters').textContent = avgCanisters;
+                document.getElementById('hotspotCount').textContent = hotspots;
+            }
+
+            getHotspotCount(sightings) {
+                const areas = {};
+                const radius = 0.01; // roughly 1km
+                
+                sightings.forEach(sighting => {
+                    const gridKey = `${Math.floor(sighting.lat / radius)}_${Math.floor(sighting.lng / radius)}`;
+                    areas[gridKey] = (areas[gridKey] || 0) + 1;
+                });
+
+                return Object.values(areas).filter(count => count >= 3).length;
             }
         }
 
