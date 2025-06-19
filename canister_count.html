@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nitrous Oxide Canister Tracker</title>
+    <title>Canister Count</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
@@ -186,171 +186,6 @@
             font-weight: 700;
         }
 
-        .recent-sightings {
-            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
-            border-radius: 12px;
-            padding: 1.5rem;
-            border: 1px solid rgba(255, 193, 7, 0.2);
-        }
-
-        .recent-sightings h3 {
-            color: #856404;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-
-        .sighting-item {
-            background: rgba(255, 255, 255, 0.8);
-            padding: 1rem;
-            border-radius: 8px;
-            margin-bottom: 0.75rem;
-            border-left: 4px solid #ffc107;
-        }
-
-        .sighting-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .sighting-location {
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 0.25rem;
-        }
-
-        .sighting-details {
-            font-size: 0.85rem;
-            color: #6c757d;
-            margin-bottom: 0.25rem;
-        }
-
-        .sighting-time {
-            font-size: 0.8rem;
-            color: #adb5bd;
-        }
-
-        .danger-info {
-            background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-top: 1.5rem;
-            border: 1px solid rgba(220, 53, 69, 0.2);
-        }
-
-        .danger-info h3 {
-            color: #721c24;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-
-        .danger-info ul {
-            color: #721c24;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            padding-left: 1.5rem;
-        }
-
-        .danger-info li {
-            margin-bottom: 0.5rem;
-        }
-
-        .image-preview {
-            max-width: 100%;
-            max-height: 150px;
-            border-radius: 8px;
-            margin-top: 0.5rem;
-            border: 2px solid #e9ecef;
-        }
-
-        .heatmap-legend {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 10px;
-            border-radius: 8px;
-            font-size: 0.8rem;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .map-controls {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            min-width: 150px;
-        }
-
-        .map-controls h4 {
-            margin: 0 0 10px 0;
-            color: #2c3e50;
-            font-size: 0.9rem;
-        }
-
-        .control-option {
-            display: flex;
-            align-items: center;
-            margin-bottom: 8px;
-            cursor: pointer;
-            padding: 4px;
-            border-radius: 4px;
-            transition: background-color 0.2s;
-        }
-
-        .control-option:hover {
-            background-color: rgba(102, 126, 234, 0.1);
-        }
-
-        .control-option input[type="radio"] {
-            margin-right: 8px;
-        }
-
-        .control-option label {
-            font-size: 0.8rem;
-            color: #495057;
-            cursor: pointer;
-            margin: 0;
-        }
-
-        .marker-cluster-small {
-            background-color: rgba(181, 226, 140, 0.8);
-            border: 2px solid rgba(110, 204, 57, 0.8);
-        }
-
-        .marker-cluster-medium {
-            background-color: rgba(241, 211, 87, 0.8);
-            border: 2px solid rgba(240, 194, 12, 0.8);
-        }
-
-        .marker-cluster-large {
-            background-color: rgba(253, 156, 115, 0.8);
-            border: 2px solid rgba(241, 128, 23, 0.8);
-        }
-
-        .marker-cluster {
-            border-radius: 50%;
-            text-align: center;
-            font-size: 12px;
-            font-weight: bold;
-            color: white;
-            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-        }
-
-        .marker-cluster div {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
         .filters-section {
             background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
             border-radius: 12px;
@@ -491,6 +326,259 @@
             font-weight: 500;
         }
 
+        .area-analysis {
+            background: linear-gradient(135deg, #e1f5fe 0%, #b3e5fc 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(33, 150, 243, 0.2);
+        }
+
+        .area-analysis h3 {
+            color: #0d47a1;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .analysis-item {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+            border-left: 4px solid #2196f3;
+        }
+
+        .analysis-title {
+            font-weight: 600;
+            color: #0d47a1;
+            margin-bottom: 0.5rem;
+        }
+
+        .analysis-details {
+            font-size: 0.9rem;
+            color: #424242;
+            line-height: 1.5;
+        }
+
+        .risk-level {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        .risk-low { background: #c8e6c9; color: #2e7d32; }
+        .risk-moderate { background: #fff3e0; color: #f57c00; }
+        .risk-high { background: #ffcdd2; color: #c62828; }
+        .risk-critical { background: #f8bbd9; color: #880e4f; }
+
+        .recent-sightings {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 193, 7, 0.2);
+        }
+
+        .recent-sightings h3 {
+            color: #856404;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .sighting-item {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+            border-left: 4px solid #ffc107;
+        }
+
+        .sighting-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .sighting-location {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.25rem;
+        }
+
+        .sighting-details {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-bottom: 0.25rem;
+        }
+
+        .sighting-time {
+            font-size: 0.8rem;
+            color: #adb5bd;
+        }
+
+        .danger-info {
+            background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            border: 1px solid rgba(220, 53, 69, 0.2);
+        }
+
+        .danger-info h3 {
+            color: #721c24;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .health-sections {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .health-section {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #dc3545;
+        }
+
+        .health-section.emergency {
+            background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+            border-left-color: #b71c1c;
+        }
+
+        .health-section h4 {
+            color: #721c24;
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .health-section ul {
+            color: #721c24;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            padding-left: 1.5rem;
+            margin: 0;
+        }
+
+        .health-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .health-section li strong {
+            color: #b71c1c;
+        }
+
+        .health-section p {
+            color: #b71c1c;
+            font-weight: 600;
+            margin-top: 1rem;
+            padding: 0.75rem;
+            background: rgba(183, 28, 28, 0.1);
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .image-preview {
+            max-width: 100%;
+            max-height: 150px;
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            border: 2px solid #e9ecef;
+        }
+
+        .map-controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            min-width: 150px;
+        }
+
+        .map-controls h4 {
+            margin: 0 0 10px 0;
+            color: #2c3e50;
+            font-size: 0.9rem;
+        }
+
+        .control-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+
+        .control-option:hover {
+            background-color: rgba(102, 126, 234, 0.1);
+        }
+
+        .control-option input[type="radio"] {
+            margin-right: 8px;
+        }
+
+        .control-option label {
+            font-size: 0.8rem;
+            color: #495057;
+            cursor: pointer;
+            margin: 0;
+        }
+
+        .marker-cluster-small {
+            background-color: rgba(181, 226, 140, 0.8);
+            border: 2px solid rgba(110, 204, 57, 0.8);
+        }
+
+        .marker-cluster-medium {
+            background-color: rgba(241, 211, 87, 0.8);
+            border: 2px solid rgba(240, 194, 12, 0.8);
+        }
+
+        .marker-cluster-large {
+            background-color: rgba(253, 156, 115, 0.8);
+            border: 2px solid rgba(241, 128, 23, 0.8);
+        }
+
+        .marker-cluster {
+            border-radius: 50%;
+            text-align: center;
+            font-size: 12px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+        }
+
+        .marker-cluster div {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .heatmap-legend {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
         @media (max-width: 768px) {
             .container {
                 flex-direction: column;
@@ -514,13 +602,21 @@
             .header h1 {
                 font-size: 1.5rem;
             }
+
+            .analytics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-row {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>🎈 Nitrous Oxide Canister Tracker</h1>
-        <p>Community-driven monitoring system for nitrous oxide waste and usage hotspots</p>
+        <h1>🎈 Nitrous Oxide Canister Tracker - Complete Edition</h1>
+        <p>Advanced community-driven monitoring system for nitrous oxide waste and usage hotspots</p>
     </div>
 
     <div class="container">
@@ -651,6 +747,13 @@
                 </form>
             </div>
 
+            <div class="area-analysis" id="areaAnalysis" style="display: none;">
+                <h3>📍 Area Analysis</h3>
+                <div id="analysisContent">
+                    <!-- Analysis content will be inserted here -->
+                </div>
+            </div>
+
             <div class="recent-sightings">
                 <h3>🕐 Recent Sightings</h3>
                 <div id="recentSightingsList">
@@ -659,14 +762,49 @@
             </div>
 
             <div class="danger-info">
-                <h3>⚠️ Health Risks</h3>
-                <ul>
-                    <li>Oxygen deprivation and suffocation risk</li>
-                    <li>Potential for falls and accidents</li>
-                    <li>Vitamin B12 deficiency with regular use</li>
-                    <li>Frostbite from direct contact with gas</li>
-                    <li>Risk of dependency and neurological damage</li>
-                </ul>
+                <h3>⚠️ Health Risks & Safety Information</h3>
+                <div class="health-sections">
+                    <div class="health-section">
+                        <h4>🫁 Immediate Physical Risks</h4>
+                        <ul>
+                            <li><strong>Oxygen Deprivation:</strong> Can cause unconsciousness within seconds, leading to falls and serious injury</li>
+                            <li><strong>Asphyxiation:</strong> Risk of suffocation, especially in enclosed spaces or with repeated use</li>
+                            <li><strong>Cold Burns:</strong> Direct contact with gas can cause frostbite (-40°C temperature)</li>
+                            <li><strong>Accidents:</strong> Loss of motor control increases fall and collision risks</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="health-section">
+                        <h4>🧠 Neurological Effects</h4>
+                        <ul>
+                            <li><strong>Vitamin B12 Depletion:</strong> Regular use blocks B12 absorption, causing nerve damage</li>
+                            <li><strong>Memory Problems:</strong> Can affect short and long-term memory formation</li>
+                            <li><strong>Coordination Issues:</strong> Impaired balance and motor skills</li>
+                            <li><strong>Peripheral Neuropathy:</strong> Numbness and weakness in hands and feet</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="health-section">
+                        <h4>⚕️ Long-term Health Consequences</h4>
+                        <ul>
+                            <li><strong>Psychological Dependence:</strong> Risk of developing compulsive use patterns</li>
+                            <li><strong>Anemia:</strong> B12 deficiency leads to reduced red blood cell production</li>
+                            <li><strong>Spinal Cord Damage:</strong> Severe B12 deficiency can cause irreversible nerve damage</li>
+                            <li><strong>Mental Health:</strong> Links to depression and anxiety disorders</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="health-section emergency">
+                        <h4>🚨 Emergency Signs</h4>
+                        <ul>
+                            <li>Unconsciousness or unresponsiveness</li>
+                            <li>Difficulty breathing or blue lips/fingernails</li>
+                            <li>Severe confusion or disorientation</li>
+                            <li>Persistent numbness in limbs</li>
+                        </ul>
+                        <p><strong>If you witness these symptoms, call emergency services immediately (999 in UK)</strong></p>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -718,6 +856,9 @@
                     canisterCount: '',
                     condition: ''
                 };
+                
+                // Make this instance globally accessible for popup buttons
+                window.currentTracker = this;
                 
                 this.initMap();
                 this.initEventListeners();
@@ -867,12 +1008,14 @@
                 };
 
                 this.sightings.push(sighting);
+                this.filteredSightings = [...this.sightings];
                 this.saveSightings();
                 this.addMarker(sighting);
                 this.updateStats();
                 this.updateRecentSightings();
                 this.resetForm();
                 this.updateMapVisualization();
+                this.updateCharts();
 
                 // Show success message
                 const btn = document.getElementById('submitBtn');
@@ -904,19 +1047,38 @@
                     })
                 });
 
-                const popupContent = `
-                    <div style="min-width: 200px;">
-                        <h4>🎈 Nitrous Oxide Sighting</h4>
-                        <p><strong>Canisters:</strong> ${sighting.canisterCount}</p>
-                        <p><strong>Condition:</strong> ${sighting.condition}</p>
-                        <p><strong>Date:</strong> ${sighting.date}</p>
-                        ${sighting.notes ? `<p><strong>Notes:</strong> ${sighting.notes}</p>` : ''}
-                        ${sighting.photo ? `<img src="${sighting.photo}" style="width: 100%; max-width: 200px; height: auto; margin-top: 10px; border-radius: 4px;">` : ''}
-                        <p style="font-size: 0.8em; color: #666; margin-top: 10px;">Intensity: ${intensity} sighting(s) in this area</p>
+                // Create enhanced popup content with both inline analysis and sidebar analysis
+                const basicPopupContent = `
+                    <div style="min-width: 200px; max-width: 280px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <h4 style="margin: 0; font-size: 0.9rem;">🎈 N2O Sighting</h4>
+                            <button onclick="window.currentTracker.showDetailedAnalysis(${sighting.lat}, ${sighting.lng}, this)" 
+                                    style="background: #007bff; color: white; border: none; padding: 3px 6px; border-radius: 3px; cursor: pointer; font-size: 0.7rem;">
+                                📊
+                            </button>
+                        </div>
+                        <div style="font-size: 0.8rem; line-height: 1.3;">
+                            <p style="margin: 3px 0;"><strong>Canisters:</strong> ${sighting.canisterCount}</p>
+                            <p style="margin: 3px 0;"><strong>Condition:</strong> ${sighting.condition}</p>
+                            <p style="margin: 3px 0;"><strong>Date:</strong> ${sighting.date}</p>
+                            ${sighting.notes ? `<p style="margin: 3px 0;"><strong>Notes:</strong> ${sighting.notes.substring(0, 40)}${sighting.notes.length > 40 ? '...' : ''}</p>` : ''}
+                            ${sighting.photo ? `<img src="${sighting.photo}" style="width: 100%; max-width: 120px; height: auto; margin-top: 5px; border-radius: 3px;">` : ''}
+                            <p style="font-size: 0.7rem; color: #666; margin: 5px 0 0 0;">Area: ${intensity} sighting(s)</p>
+                        </div>
+                        <div id="analysisContainer-${sighting.id}"></div>
                     </div>
                 `;
 
-                marker.bindPopup(popupContent);
+                marker.bindPopup(basicPopupContent, {
+                    maxWidth: 300,
+                    maxHeight: 400
+                });
+                
+                // Add click event to show area analysis in sidebar
+                marker.on('click', () => {
+                    this.showAreaAnalysis(sighting.lat, sighting.lng);
+                });
+                
                 this.markers.push(marker);
                 
                 // Add to appropriate layer based on current view
@@ -927,13 +1089,319 @@
                 }
             }
 
-            getSightingIntensity(lat, lng) {
-                const radius = 0.01; // roughly 1km
-                return this.sightings.filter(s => 
+            showDetailedAnalysis(lat, lng, buttonElement) {
+                // Find nearby sightings within 1km radius
+                const radius = 0.01;
+                const nearbySightings = this.sightings.filter(s => 
                     Math.abs(s.lat - lat) < radius && Math.abs(s.lng - lng) < radius
-                ).length;
+                );
+                
+                if (nearbySightings.length === 0) return;
+                
+                // Find the analysis container in the popup
+                const popup = buttonElement.closest('.leaflet-popup-content');
+                const sightingId = nearbySightings.find(s => 
+                    Math.abs(s.lat - lat) < 0.0001 && Math.abs(s.lng - lng) < 0.0001
+                )?.id || 'analysis';
+                
+                let analysisContainer = popup.querySelector(`#analysisContainer-${sightingId}`);
+                if (!analysisContainer) {
+                    analysisContainer = popup.querySelector('[id^="analysisContainer-"]');
+                }
+                
+                if (!analysisContainer) return;
+                
+                // Toggle analysis visibility
+                if (analysisContainer.innerHTML.trim() !== '') {
+                    analysisContainer.innerHTML = '';
+                    buttonElement.textContent = '📊';
+                    return;
+                }
+                
+                // Calculate statistics
+                const totalCanisters = this.calculateTotalCanisters(nearbySightings);
+                const conditionAnalysis = this.getConditionAnalysis(nearbySightings);
+                const riskLevel = this.calculateRiskLevel(nearbySightings, totalCanisters);
+                
+                buttonElement.textContent = '❌';
+                
+                // Concise analysis content
+                const recommendations = this.getCompactRecommendations(riskLevel.level, conditionAnalysis.primary);
+                
+                analysisContainer.innerHTML = `
+                    <div style="border-top: 1px solid #ddd; padding-top: 8px; margin-top: 8px; font-size: 0.75rem;">
+                        <div style="background: ${this.getRiskBgColor(riskLevel.level)}; padding: 6px; border-radius: 4px; margin-bottom: 6px;">
+                            <div style="font-weight: 600; color: ${this.getRiskTextColor(riskLevel.level)}; font-size: 0.8rem;">${riskLevel.label}</div>
+                            <div style="color: #444; line-height: 1.2; margin-top: 2px;">
+                                ${nearbySightings.length} reports • ${totalCanisters.min}-${totalCanisters.max} canisters
+                            </div>
+                        </div>
+                        
+                        <div style="margin-bottom: 6px;">
+                            <strong style="color: #333;">Pattern:</strong> ${conditionAnalysis.primary} (${this.getTrendIcon(nearbySightings)})
+                        </div>
+                        
+                        <div style="background: #f8f9fa; padding: 5px; border-radius: 3px; color: #555;">
+                            <strong>Action:</strong> ${recommendations}
+                        </div>
+                    </div>
+                `;
             }
 
+            showAreaAnalysis(lat, lng) {
+                const analysisSection = document.getElementById('areaAnalysis');
+                const analysisContent = document.getElementById('analysisContent');
+                
+                // Find nearby sightings within 1km radius
+                const radius = 0.01;
+                const nearbySightings = this.sightings.filter(s => 
+                    Math.abs(s.lat - lat) < radius && Math.abs(s.lng - lng) < radius
+                );
+                
+                if (nearbySightings.length === 0) {
+                    analysisSection.style.display = 'none';
+                    return;
+                }
+                
+                // Calculate statistics
+                const totalCanisters = this.calculateTotalCanisters(nearbySightings);
+                const timespan = this.getTimespanAnalysis(nearbySightings);
+                const conditionAnalysis = this.getConditionAnalysis(nearbySightings);
+                const riskLevel = this.calculateRiskLevel(nearbySightings, totalCanisters);
+                
+                // Generate area name (simplified - in real app would use reverse geocoding)
+                const areaName = `Location ${lat.toFixed(4)}, ${lng.toFixed(4)}`;
+                
+                analysisContent.innerHTML = `
+                    <div class="analysis-item">
+                        <div class="analysis-title">📍 ${areaName}</div>
+                        <div class="analysis-details">
+                            <strong>Total Sightings:</strong> ${nearbySightings.length} report(s)<br>
+                            <strong>Estimated Canisters:</strong> ${totalCanisters.min}-${totalCanisters.max} units<br>
+                            <strong>Time Period:</strong> ${timespan}
+                        </div>
+                        <span class="risk-level risk-${riskLevel.level}">${riskLevel.label}</span>
+                    </div>
+                    
+                    <div class="analysis-item">
+                        <div class="analysis-title">🔍 Usage Pattern Analysis</div>
+                        <div class="analysis-details">
+                            ${conditionAnalysis.description}<br><br>
+                            <strong>Most Common Condition:</strong> ${conditionAnalysis.primary}<br>
+                            <strong>Trend:</strong> ${this.getTrendAnalysis(nearbySightings)}
+                        </div>
+                    </div>
+                    
+                    <div class="analysis-item">
+                        <div class="analysis-title">🎯 Location Insights</div>
+                        <div class="analysis-details">
+                            ${this.getLocationInsights(nearbySightings, riskLevel.level)}
+                        </div>
+                    </div>
+                    
+                    <div class="analysis-item">
+                        <div class="analysis-title">💡 Recommendations</div>
+                        <div class="analysis-details">
+                            ${this.getRecommendations(riskLevel.level, conditionAnalysis.primary)}
+                        </div>
+                    </div>
+                `;
+                
+                analysisSection.style.display = 'block';
+                analysisSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+
+            // Helper methods for analysis
+            getRiskBgColor(level) {
+                const colors = {
+                    'low': '#d4edda',
+                    'moderate': '#fff3cd', 
+                    'high': '#f8d7da',
+                    'critical': '#f5c6cb'
+                };
+                return colors[level] || colors.low;
+            }
+            
+            getRiskTextColor(level) {
+                const colors = {
+                    'low': '#155724',
+                    'moderate': '#856404',
+                    'high': '#721c24', 
+                    'critical': '#721c24'
+                };
+                return colors[level] || colors.low;
+            }
+            
+            getTrendIcon(sightings) {
+                if (sightings.length < 2) return '📊';
+                
+                const sortedSightings = sightings.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+                const recentHalf = sortedSightings.slice(Math.ceil(sortedSightings.length / 2));
+                const olderHalf = sortedSightings.slice(0, Math.floor(sortedSightings.length / 2));
+                
+                if (recentHalf.length > olderHalf.length) return '📈';
+                if (recentHalf.length < olderHalf.length) return '📉';
+                return '➡️';
+            }
+            
+            getCompactRecommendations(riskLevel, primaryCondition) {
+                if (riskLevel === 'critical') return 'Report to authorities immediately';
+                if (riskLevel === 'high') return 'Community intervention needed';
+                if (riskLevel === 'moderate') return 'Continue monitoring closely';
+                return 'Standard monitoring sufficient';
+            }
+            
+            calculateTotalCanisters(sightings) {
+                let minTotal = 0, maxTotal = 0;
+                
+                sightings.forEach(s => {
+                    switch(s.canisterCount) {
+                        case '1-5':
+                            minTotal += 1; maxTotal += 5;
+                            break;
+                        case '6-10':
+                            minTotal += 6; maxTotal += 10;
+                            break;
+                        case '11-20':
+                            minTotal += 11; maxTotal += 20;
+                            break;
+                        case '20+':
+                            minTotal += 20; maxTotal += 50; // Estimate upper bound
+                            break;
+                    }
+                });
+                
+                return { min: minTotal, max: maxTotal };
+            }
+            
+            getTimespanAnalysis(sightings) {
+                if (sightings.length === 1) return 'Single report';
+                
+                const dates = sightings.map(s => new Date(s.timestamp)).sort();
+                const firstDate = dates[0];
+                const lastDate = dates[dates.length - 1];
+                const daysDiff = Math.ceil((lastDate - firstDate) / (1000 * 60 * 60 * 24));
+                
+                if (daysDiff === 0) return 'Same day activity';
+                if (daysDiff === 1) return 'Activity over 2 days';
+                if (daysDiff <= 7) return `Activity over ${daysDiff} days`;
+                if (daysDiff <= 30) return `Activity over ${Math.ceil(daysDiff/7)} weeks`;
+                return `Activity over ${Math.ceil(daysDiff/30)} months`;
+            }
+            
+            getConditionAnalysis(sightings) {
+                const conditions = {};
+                sightings.forEach(s => {
+                    conditions[s.condition] = (conditions[s.condition] || 0) + 1;
+                });
+                
+                const sortedConditions = Object.entries(conditions).sort((a, b) => b[1] - a[1]);
+                const primary = sortedConditions[0][0];
+                
+                const descriptions = {
+                    'scattered': 'Evidence suggests casual recreational use with canisters discarded randomly.',
+                    'dumped': 'Large quantities dumped together indicate potential dealing or heavy group usage.',
+                    'binned': 'Users showing some disposal awareness, but still indicating regular usage.',
+                    'vehicle': 'Vehicle-associated usage suggests mobile consumption or potential supply activity.'
+                };
+                
+                return {
+                    primary: primary.charAt(0).toUpperCase() + primary.slice(1),
+                    description: descriptions[primary] || 'Mixed usage patterns observed.'
+                };
+            }
+            
+            calculateRiskLevel(sightings, totalCanisters) {
+                const count = sightings.length;
+                const maxCanisters = totalCanisters.max;
+                const recentActivity = sightings.filter(s => 
+                    (Date.now() - new Date(s.timestamp)) < (7 * 24 * 60 * 60 * 1000)
+                ).length;
+                
+                if (count >= 10 || maxCanisters >= 100 || recentActivity >= 5) {
+                    return { level: 'critical', label: 'Critical Hotspot' };
+                } else if (count >= 5 || maxCanisters >= 50 || recentActivity >= 3) {
+                    return { level: 'high', label: 'High Activity Zone' };
+                } else if (count >= 3 || maxCanisters >= 20 || recentActivity >= 2) {
+                    return { level: 'moderate', label: 'Moderate Concern' };
+                } else {
+                    return { level: 'low', label: 'Low Activity' };
+                }
+            }
+            
+            getTrendAnalysis(sightings) {
+                if (sightings.length < 2) return 'Insufficient data for trend analysis';
+                
+                const sortedSightings = sightings.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+                const recentHalf = sortedSightings.slice(Math.ceil(sortedSightings.length / 2));
+                const olderHalf = sortedSightings.slice(0, Math.floor(sortedSightings.length / 2));
+                
+                if (recentHalf.length > olderHalf.length) {
+                    return '📈 Increasing activity (more recent reports)';
+                } else if (recentHalf.length < olderHalf.length) {
+                    return '📉 Decreasing activity (fewer recent reports)';
+                } else {
+                    return '➡️ Stable activity pattern';
+                }
+            }
+            
+            getLocationInsights(sightings, riskLevel) {
+                const insights = [];
+                
+                if (riskLevel === 'critical') {
+                    insights.push('⚠️ This area shows critical levels of nitrous oxide activity.');
+                    insights.push('🏢 May indicate proximity to suppliers or popular usage venues.');
+                } else if (riskLevel === 'high') {
+                    insights.push('🔍 Elevated activity suggests regular usage in this location.');
+                    insights.push('📍 Could be near nightlife, festivals, or gathering spots.');
+                } else if (riskLevel === 'moderate') {
+                    insights.push('👀 Moderate activity indicating occasional usage.');
+                } else {
+                    insights.push('✅ Lower activity levels in this area.');
+                }
+                
+                const timeOfDay = this.analyzeTimePatterns(sightings);
+                if (timeOfDay) insights.push(timeOfDay);
+                
+                return insights.join('<br>');
+            }
+            
+            analyzeTimePatterns(sightings) {
+                // Simplified time analysis - in real app would analyze actual reporting times
+                const hasNotes = sightings.some(s => s.notes && s.notes.toLowerCase().includes('night'));
+                if (hasNotes) return '🌙 Some reports suggest nighttime activity.';
+                
+                const recent = sightings.filter(s => (Date.now() - new Date(s.timestamp)) < (24 * 60 * 60 * 1000));
+                if (recent.length > 0) return '⏰ Recent activity (within 24 hours).';
+                
+                return null;
+            }
+            
+            getRecommendations(riskLevel, primaryCondition) {
+                const recommendations = [];
+                
+                if (riskLevel === 'critical') {
+                    recommendations.push('🚨 Consider reporting to local authorities or council');
+                    recommendations.push('🏥 Increase awareness of nearby health services');
+                    recommendations.push('🗑️ Request additional waste disposal facilities');
+                } else if (riskLevel === 'high') {
+                    recommendations.push('📢 Community awareness campaign recommended');
+                    recommendations.push('🗑️ Additional disposal bins may help');
+                } else if (riskLevel === 'moderate') {
+                    recommendations.push('👁️ Continue monitoring this location');
+                    recommendations.push('📚 Educational materials could be beneficial');
+                } else {
+                    recommendations.push('✅ Maintain current monitoring level');
+                }
+                
+                if (primaryCondition === 'Vehicle') {
+                    recommendations.push('🚗 Monitor for potential supply chain activity');
+                }
+                
+                return recommendations.join('<br>');
+            }
+
+            // Map visualization methods
             changeMapView(viewType) {
                 this.currentView = viewType;
                 this.clearMapLayers();
@@ -1014,6 +1482,292 @@
                 }
             }
 
+            // Filter methods
+            applyFilters() {
+                this.filters.dateFrom = document.getElementById('dateFrom').value;
+                this.filters.dateTo = document.getElementById('dateTo').value;
+                this.filters.canisterCount = document.getElementById('filterCount').value;
+                this.filters.condition = document.getElementById('filterCondition').value;
+
+                this.filteredSightings = this.sightings.filter(sighting => {
+                    // Date filter
+                    if (this.filters.dateFrom) {
+                        const fromDate = new Date(this.filters.dateFrom);
+                        const sightingDate = new Date(sighting.timestamp);
+                        if (sightingDate < fromDate) return false;
+                    }
+                    
+                    if (this.filters.dateTo) {
+                        const toDate = new Date(this.filters.dateTo);
+                        toDate.setHours(23, 59, 59, 999); // End of day
+                        const sightingDate = new Date(sighting.timestamp);
+                        if (sightingDate > toDate) return false;
+                    }
+
+                    // Canister count filter
+                    if (this.filters.canisterCount && sighting.canisterCount !== this.filters.canisterCount) {
+                        return false;
+                    }
+
+                    // Condition filter
+                    if (this.filters.condition && sighting.condition !== this.filters.condition) {
+                        return false;
+                    }
+
+                    return true;
+                });
+
+                this.updateFilteredVisualization();
+                this.updateStats();
+                this.updateCharts();
+            }
+
+            clearFilters() {
+                document.getElementById('dateFrom').value = '';
+                document.getElementById('dateTo').value = '';
+                document.getElementById('filterCount').value = '';
+                document.getElementById('filterCondition').value = '';
+                
+                this.filters = {
+                    dateFrom: null,
+                    dateTo: null,
+                    canisterCount: '',
+                    condition: ''
+                };
+
+                this.filteredSightings = [...this.sightings];
+                this.updateFilteredVisualization();
+                this.updateStats();
+                this.updateCharts();
+            }
+
+            updateFilteredVisualization() {
+                this.clearMapLayers();
+                
+                // Remove all existing markers
+                this.markers.forEach(marker => {
+                    if (marker._map) {
+                        this.map.removeLayer(marker);
+                    }
+                });
+                
+                // Clear markers array and rebuild with filtered data
+                this.markers = [];
+                this.filteredSightings.forEach(sighting => {
+                    this.addMarkerForFiltered(sighting);
+                });
+                
+                this.updateMapVisualization();
+            }
+
+            addMarkerForFiltered(sighting) {
+                const intensity = this.getSightingIntensity(sighting.lat, sighting.lng);
+                let iconColor = 'green';
+                
+                if (intensity >= 6) iconColor = 'red';
+                else if (intensity >= 3) iconColor = 'orange';
+
+                const marker = L.marker([sighting.lat, sighting.lng], {
+                    icon: L.icon({
+                        iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-${iconColor}.png`,
+                        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                        iconSize: [25, 41],
+                        iconAnchor: [12, 41],
+                        popupAnchor: [1, -34],
+                        shadowSize: [41, 41]
+                    })
+                });
+
+                const popupContent = `
+                    <div style="min-width: 200px;">
+                        <h4>🎈 Nitrous Oxide Sighting</h4>
+                        <p><strong>Canisters:</strong> ${sighting.canisterCount}</p>
+                        <p><strong>Condition:</strong> ${sighting.condition}</p>
+                        <p><strong>Date:</strong> ${sighting.date}</p>
+                        ${sighting.notes ? `<p><strong>Notes:</strong> ${sighting.notes}</p>` : ''}
+                        ${sighting.photo ? `<img src="${sighting.photo}" style="width: 100%; max-width: 200px; height: auto; margin-top: 10px; border-radius: 4px;">` : ''}
+                        <p style="font-size: 0.8em; color: #666; margin-top: 10px;">Intensity: ${intensity} sighting(s) in this area</p>
+                    </div>
+                `;
+
+                marker.bindPopup(popupContent);
+                this.markers.push(marker);
+            }
+
+            // Chart methods
+            initCharts() {
+                this.initTimeChart();
+                this.initConditionChart();
+                this.updateCharts();
+            }
+
+            initTimeChart() {
+                const ctx = document.getElementById('timeChart').getContext('2d');
+                this.charts.timeChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: [],
+                        datasets: [{
+                            label: 'Daily Sightings',
+                            data: [],
+                            borderColor: '#667eea',
+                            backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                            borderWidth: 2,
+                            fill: true,
+                            tension: 0.4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    stepSize: 1
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            initConditionChart() {
+                const ctx = document.getElementById('conditionChart').getContext('2d');
+                this.charts.conditionChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Scattered', 'Dumped', 'Near Bins', 'Near Vehicle'],
+                        datasets: [{
+                            data: [0, 0, 0, 0],
+                            backgroundColor: [
+                                '#ff6384',
+                                '#36a2eb',
+                                '#ffce56',
+                                '#4bc0c0'
+                            ],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    padding: 15,
+                                    usePointStyle: true,
+                                    font: {
+                                        size: 10
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            updateCharts() {
+                this.updateTimeChart();
+                this.updateConditionChart();
+                this.updateAnalytics();
+            }
+
+            updateTimeChart() {
+                // Group sightings by date
+                const dataToUse = this.filteredSightings.length > 0 ? this.filteredSightings : this.sightings;
+                const dailyCounts = {};
+                
+                dataToUse.forEach(sighting => {
+                    const date = sighting.date;
+                    dailyCounts[date] = (dailyCounts[date] || 0) + 1;
+                });
+
+                // Sort dates and get last 14 days
+                const sortedDates = Object.keys(dailyCounts).sort((a, b) => new Date(a) - new Date(b));
+                const last14Days = sortedDates.slice(-14);
+                
+                const labels = last14Days.map(date => {
+                    const d = new Date(date);
+                    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                });
+                
+                const data = last14Days.map(date => dailyCounts[date] || 0);
+
+                this.charts.timeChart.data.labels = labels;
+                this.charts.timeChart.data.datasets[0].data = data;
+                this.charts.timeChart.update();
+            }
+
+            updateConditionChart() {
+                const dataToUse = this.filteredSightings.length > 0 ? this.filteredSightings : this.sightings;
+                const conditionCounts = {
+                    'scattered': 0,
+                    'dumped': 0,
+                    'binned': 0,
+                    'vehicle': 0
+                };
+
+                dataToUse.forEach(sighting => {
+                    conditionCounts[sighting.condition] = (conditionCounts[sighting.condition] || 0) + 1;
+                });
+
+                this.charts.conditionChart.data.datasets[0].data = [
+                    conditionCounts.scattered,
+                    conditionCounts.dumped,
+                    conditionCounts.binned,
+                    conditionCounts.vehicle
+                ];
+                this.charts.conditionChart.update();
+            }
+
+            updateAnalytics() {
+                const dataToUse = this.filteredSightings.length > 0 ? this.filteredSightings : this.sightings;
+                
+                // Calculate average canisters
+                let totalCanisters = 0;
+                dataToUse.forEach(sighting => {
+                    switch(sighting.canisterCount) {
+                        case '1-5': totalCanisters += 3; break;
+                        case '6-10': totalCanisters += 8; break;
+                        case '11-20': totalCanisters += 15; break;
+                        case '20+': totalCanisters += 25; break;
+                    }
+                });
+                const avgCanisters = dataToUse.length > 0 ? Math.round(totalCanisters / dataToUse.length) : 0;
+
+                // Count hotspots (areas with 3+ sightings)
+                const hotspots = this.getHotspotCount(dataToUse);
+
+                document.getElementById('avgCanisters').textContent = avgCanisters;
+                document.getElementById('hotspotCount').textContent = hotspots;
+            }
+
+            getHotspotCount(sightings) {
+                const areas = {};
+                const radius = 0.01; // roughly 1km
+                
+                sightings.forEach(sighting => {
+                    const gridKey = `${Math.floor(sighting.lat / radius)}_${Math.floor(sighting.lng / radius)}`;
+                    areas[gridKey] = (areas[gridKey] || 0) + 1;
+                });
+
+                return Object.values(areas).filter(count => count >= 3).length;
+            }
+
+            getSightingIntensity(lat, lng) {
+                const radius = 0.01; // roughly 1km
+                return this.sightings.filter(s => 
+                    Math.abs(s.lat - lat) < radius && Math.abs(s.lng - lng) < radius
+                ).length;
+            }
+
             updateStats() {
                 const today = new Date().toLocaleDateString();
                 const weekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
@@ -1059,8 +1813,6 @@
             }
 
             saveSightings() {
-                // In a real app, this would save to a database
-                // For demo purposes, we'll use localStorage
                 try {
                     localStorage.setItem('nitrousSightings', JSON.stringify(this.sightings));
                 } catch (e) {
@@ -1069,9 +1821,6 @@
             }
 
             generateTestData() {
-                // Force regeneration of test data (comment out next line to keep existing data)
-                // if (this.sightings.length > 0) return;
-                
                 console.log('Generating fresh test data...');
                 
                 // Clear existing data
@@ -1406,283 +2155,6 @@
                     this.sightings = [];
                     this.filteredSightings = [];
                 }
-            }
-
-            applyFilters() {
-                this.filters.dateFrom = document.getElementById('dateFrom').value;
-                this.filters.dateTo = document.getElementById('dateTo').value;
-                this.filters.canisterCount = document.getElementById('filterCount').value;
-                this.filters.condition = document.getElementById('filterCondition').value;
-
-                this.filteredSightings = this.sightings.filter(sighting => {
-                    // Date filter
-                    if (this.filters.dateFrom) {
-                        const fromDate = new Date(this.filters.dateFrom);
-                        const sightingDate = new Date(sighting.timestamp);
-                        if (sightingDate < fromDate) return false;
-                    }
-                    
-                    if (this.filters.dateTo) {
-                        const toDate = new Date(this.filters.dateTo);
-                        toDate.setHours(23, 59, 59, 999); // End of day
-                        const sightingDate = new Date(sighting.timestamp);
-                        if (sightingDate > toDate) return false;
-                    }
-
-                    // Canister count filter
-                    if (this.filters.canisterCount && sighting.canisterCount !== this.filters.canisterCount) {
-                        return false;
-                    }
-
-                    // Condition filter
-                    if (this.filters.condition && sighting.condition !== this.filters.condition) {
-                        return false;
-                    }
-
-                    return true;
-                });
-
-                this.updateFilteredVisualization();
-                this.updateStats();
-                this.updateCharts();
-            }
-
-            clearFilters() {
-                document.getElementById('dateFrom').value = '';
-                document.getElementById('dateTo').value = '';
-                document.getElementById('filterCount').value = '';
-                document.getElementById('filterCondition').value = '';
-                
-                this.filters = {
-                    dateFrom: null,
-                    dateTo: null,
-                    canisterCount: '',
-                    condition: ''
-                };
-
-                this.filteredSightings = [...this.sightings];
-                this.updateFilteredVisualization();
-                this.updateStats();
-                this.updateCharts();
-            }
-
-            updateFilteredVisualization() {
-                this.clearMapLayers();
-                
-                // Remove all existing markers
-                this.markers.forEach(marker => {
-                    if (marker._map) {
-                        this.map.removeLayer(marker);
-                    }
-                });
-                
-                // Clear markers array and rebuild with filtered data
-                this.markers = [];
-                this.filteredSightings.forEach(sighting => {
-                    this.addMarkerForFiltered(sighting);
-                });
-                
-                this.updateMapVisualization();
-            }
-
-            addMarkerForFiltered(sighting) {
-                const intensity = this.getSightingIntensity(sighting.lat, sighting.lng);
-                let iconColor = 'green';
-                
-                if (intensity >= 6) iconColor = 'red';
-                else if (intensity >= 3) iconColor = 'orange';
-
-                const marker = L.marker([sighting.lat, sighting.lng], {
-                    icon: L.icon({
-                        iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-${iconColor}.png`,
-                        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-                        iconSize: [25, 41],
-                        iconAnchor: [12, 41],
-                        popupAnchor: [1, -34],
-                        shadowSize: [41, 41]
-                    })
-                });
-
-                const popupContent = `
-                    <div style="min-width: 200px;">
-                        <h4>🎈 Nitrous Oxide Sighting</h4>
-                        <p><strong>Canisters:</strong> ${sighting.canisterCount}</p>
-                        <p><strong>Condition:</strong> ${sighting.condition}</p>
-                        <p><strong>Date:</strong> ${sighting.date}</p>
-                        ${sighting.notes ? `<p><strong>Notes:</strong> ${sighting.notes}</p>` : ''}
-                        ${sighting.photo ? `<img src="${sighting.photo}" style="width: 100%; max-width: 200px; height: auto; margin-top: 10px; border-radius: 4px;">` : ''}
-                        <p style="font-size: 0.8em; color: #666; margin-top: 10px;">Intensity: ${intensity} sighting(s) in this area</p>
-                    </div>
-                `;
-
-                marker.bindPopup(popupContent);
-                this.markers.push(marker);
-            }
-
-            initCharts() {
-                this.initTimeChart();
-                this.initConditionChart();
-                this.updateCharts();
-            }
-
-            initTimeChart() {
-                const ctx = document.getElementById('timeChart').getContext('2d');
-                this.charts.timeChart = new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: [],
-                        datasets: [{
-                            label: 'Daily Sightings',
-                            data: [],
-                            borderColor: '#667eea',
-                            backgroundColor: 'rgba(102, 126, 234, 0.1)',
-                            borderWidth: 2,
-                            fill: true,
-                            tension: 0.4
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                display: false
-                            }
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                ticks: {
-                                    stepSize: 1
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-
-            initConditionChart() {
-                const ctx = document.getElementById('conditionChart').getContext('2d');
-                this.charts.conditionChart = new Chart(ctx, {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['Scattered', 'Dumped', 'Near Bins', 'Near Vehicle'],
-                        datasets: [{
-                            data: [0, 0, 0, 0],
-                            backgroundColor: [
-                                '#ff6384',
-                                '#36a2eb',
-                                '#ffce56',
-                                '#4bc0c0'
-                            ],
-                            borderWidth: 0
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                position: 'bottom',
-                                labels: {
-                                    padding: 15,
-                                    usePointStyle: true,
-                                    font: {
-                                        size: 10
-                                    }
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-
-            updateCharts() {
-                this.updateTimeChart();
-                this.updateConditionChart();
-                this.updateAnalytics();
-            }
-
-            updateTimeChart() {
-                // Group sightings by date
-                const dataToUse = this.filteredSightings.length > 0 ? this.filteredSightings : this.sightings;
-                const dailyCounts = {};
-                
-                dataToUse.forEach(sighting => {
-                    const date = sighting.date;
-                    dailyCounts[date] = (dailyCounts[date] || 0) + 1;
-                });
-
-                // Sort dates and get last 14 days
-                const sortedDates = Object.keys(dailyCounts).sort((a, b) => new Date(a) - new Date(b));
-                const last14Days = sortedDates.slice(-14);
-                
-                const labels = last14Days.map(date => {
-                    const d = new Date(date);
-                    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-                });
-                
-                const data = last14Days.map(date => dailyCounts[date] || 0);
-
-                this.charts.timeChart.data.labels = labels;
-                this.charts.timeChart.data.datasets[0].data = data;
-                this.charts.timeChart.update();
-            }
-
-            updateConditionChart() {
-                const dataToUse = this.filteredSightings.length > 0 ? this.filteredSightings : this.sightings;
-                const conditionCounts = {
-                    'scattered': 0,
-                    'dumped': 0,
-                    'binned': 0,
-                    'vehicle': 0
-                };
-
-                dataToUse.forEach(sighting => {
-                    conditionCounts[sighting.condition] = (conditionCounts[sighting.condition] || 0) + 1;
-                });
-
-                this.charts.conditionChart.data.datasets[0].data = [
-                    conditionCounts.scattered,
-                    conditionCounts.dumped,
-                    conditionCounts.binned,
-                    conditionCounts.vehicle
-                ];
-                this.charts.conditionChart.update();
-            }
-
-            updateAnalytics() {
-                const dataToUse = this.filteredSightings.length > 0 ? this.filteredSightings : this.sightings;
-                
-                // Calculate average canisters
-                let totalCanisters = 0;
-                dataToUse.forEach(sighting => {
-                    switch(sighting.canisterCount) {
-                        case '1-5': totalCanisters += 3; break;
-                        case '6-10': totalCanisters += 8; break;
-                        case '11-20': totalCanisters += 15; break;
-                        case '20+': totalCanisters += 25; break;
-                    }
-                });
-                const avgCanisters = dataToUse.length > 0 ? Math.round(totalCanisters / dataToUse.length) : 0;
-
-                // Count hotspots (areas with 3+ sightings)
-                const hotspots = this.getHotspotCount(dataToUse);
-
-                document.getElementById('avgCanisters').textContent = avgCanisters;
-                document.getElementById('hotspotCount').textContent = hotspots;
-            }
-
-            getHotspotCount(sightings) {
-                const areas = {};
-                const radius = 0.01; // roughly 1km
-                
-                sightings.forEach(sighting => {
-                    const gridKey = `${Math.floor(sighting.lat / radius)}_${Math.floor(sighting.lng / radius)}`;
-                    areas[gridKey] = (areas[gridKey] || 0) + 1;
-                });
-
-                return Object.values(areas).filter(count => count >= 3).length;
             }
         }
 
