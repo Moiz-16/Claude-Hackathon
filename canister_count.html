@@ -582,6 +582,7 @@
                 <div class="filter-actions">
                     <button class="btn-small btn-filter" id="applyFilters">Apply Filters</button>
                     <button class="btn-small btn-clear" id="clearFilters">Clear All</button>
+                    <button class="btn-small" id="generateData" style="background: linear-gradient(135deg, #4caf50 0%, #388e3c 100%); color: white;">Generate Test Data</button>
                 </div>
             </div>
 
@@ -784,6 +785,12 @@
 
                 document.getElementById('clearFilters').addEventListener('click', () => {
                     this.clearFilters();
+                });
+
+                document.getElementById('generateData').addEventListener('click', () => {
+                    this.generateTestData();
+                    this.updateStats();
+                    this.updateCharts();
                 });
             }
 
@@ -1062,49 +1069,171 @@
             }
 
             generateTestData() {
-                // Only generate if no existing data
-                if (this.sightings.length > 0) return;
+                // Force regeneration of test data (comment out next line to keep existing data)
+                // if (this.sightings.length > 0) return;
+                
+                console.log('Generating fresh test data...');
+                
+                // Clear existing data
+                this.sightings = [];
+                this.filteredSightings = [];
+                this.clearMapLayers();
+                this.markers = [];
+                
+                // Clear localStorage
+                try {
+                    localStorage.removeItem('nitrousSightings');
+                } catch (e) {
+                    console.log('Could not clear localStorage');
+                }
 
                 const testData = [];
                 const conditions = ['scattered', 'dumped', 'binned', 'vehicle'];
                 const counts = ['1-5', '6-10', '11-20', '20+'];
                 
-                // Tower Hamlets hotspot coordinates (higher density)
-                const towerHamletsCoords = [
-                    [51.5067, -0.0382], [51.5078, -0.0365], [51.5045, -0.0398],
-                    [51.5089, -0.0342], [51.5034, -0.0356], [51.5098, -0.0389],
-                    [51.5056, -0.0334], [51.5076, -0.0378], [51.5023, -0.0367],
-                    [51.5087, -0.0395], [51.5045, -0.0323], [51.5069, -0.0356],
-                    [51.5092, -0.0378], [51.5034, -0.0389], [51.5078, -0.0345],
-                    [51.5056, -0.0367], [51.5089, -0.0378], [51.5067, -0.0334],
-                    [51.5098, -0.0356], [51.5045, -0.0389], [51.5076, -0.0323],
-                    [51.5034, -0.0378], [51.5087, -0.0345], [51.5069, -0.0398],
-                    [51.5092, -0.0367], [51.5056, -0.0389], [51.5078, -0.0356],
-                    [51.5067, -0.0378], [51.5045, -0.0334], [51.5089, -0.0356]
+                // Define London hotspot areas with varying intensities
+                const hotspots = [
+                    // Tower Hamlets - Major hotspot (120 sightings)
+                    {
+                        name: 'Tower Hamlets',
+                        center: [51.5067, -0.0382],
+                        radius: 0.008,
+                        intensity: 120,
+                        countBias: [0.2, 0.3, 0.3, 0.2] // Higher canister counts
+                    },
+                    // Camden - High activity (80 sightings)
+                    {
+                        name: 'Camden',
+                        center: [51.5290, -0.1255],
+                        radius: 0.006,
+                        intensity: 80,
+                        countBias: [0.3, 0.4, 0.2, 0.1]
+                    },
+                    // Hackney - High activity (75 sightings)
+                    {
+                        name: 'Hackney',
+                        center: [51.5450, -0.0553],
+                        radius: 0.007,
+                        intensity: 75,
+                        countBias: [0.25, 0.35, 0.25, 0.15]
+                    },
+                    // Southwark - Moderate activity (60 sightings)
+                    {
+                        name: 'Southwark',
+                        center: [51.5016, -0.0877],
+                        radius: 0.005,
+                        intensity: 60,
+                        countBias: [0.4, 0.3, 0.2, 0.1]
+                    },
+                    // Lambeth - Moderate activity (55 sightings)
+                    {
+                        name: 'Lambeth',
+                        center: [51.4607, -0.1163],
+                        radius: 0.006,
+                        intensity: 55,
+                        countBias: [0.35, 0.35, 0.2, 0.1]
+                    },
+                    // Westminster - Tourist area (45 sightings)
+                    {
+                        name: 'Westminster',
+                        center: [51.4994, -0.1244],
+                        radius: 0.004,
+                        intensity: 45,
+                        countBias: [0.5, 0.3, 0.15, 0.05]
+                    },
+                    // Islington - Moderate activity (50 sightings)
+                    {
+                        name: 'Islington',
+                        center: [51.5362, -0.1034],
+                        radius: 0.005,
+                        intensity: 50,
+                        countBias: [0.4, 0.35, 0.2, 0.05]
+                    },
+                    // Newham - East London (40 sightings)
+                    {
+                        name: 'Newham',
+                        center: [51.5077, 0.0469],
+                        radius: 0.008,
+                        intensity: 40,
+                        countBias: [0.45, 0.3, 0.2, 0.05]
+                    },
+                    // Greenwich - South East (35 sightings)
+                    {
+                        name: 'Greenwich',
+                        center: [51.4769, 0.0005],
+                        radius: 0.006,
+                        intensity: 35,
+                        countBias: [0.5, 0.3, 0.15, 0.05]
+                    },
+                    // Wandsworth - South West (30 sightings)
+                    {
+                        name: 'Wandsworth',
+                        center: [51.4571, -0.1956],
+                        radius: 0.007,
+                        intensity: 30,
+                        countBias: [0.6, 0.25, 0.1, 0.05]
+                    }
                 ];
 
-                // Other London areas (lower density)
-                const otherCoords = [
-                    [51.5074, -0.1278], [51.4994, -0.1244], [51.5154, -0.1423],
-                    [51.4923, -0.1235], [51.5321, -0.1056], [51.4834, -0.1652],
-                    [51.5234, -0.0895], [51.4567, -0.1789], [51.5456, -0.0934],
-                    [51.4789, -0.2134], [51.5123, -0.0678], [51.4634, -0.1456],
-                    [51.5345, -0.1567], [51.4891, -0.0789], [51.5012, -0.1890]
-                ];
+                // Generate data for each hotspot
+                let idCounter = 1000;
+                hotspots.forEach(hotspot => {
+                    for (let i = 0; i < hotspot.intensity; i++) {
+                        // Generate random point within hotspot radius
+                        const angle = Math.random() * 2 * Math.PI;
+                        const distance = Math.random() * hotspot.radius;
+                        const lat = hotspot.center[0] + distance * Math.cos(angle);
+                        const lng = hotspot.center[1] + distance * Math.sin(angle);
+                        
+                        // Generate realistic timestamp with patterns
+                        const daysAgo = this.generateRealisticDaysAgo();
+                        const date = new Date();
+                        date.setDate(date.getDate() - daysAgo);
+                        
+                        // Add time of day variation (more activity in evenings/weekends)
+                        const hour = this.generateRealisticHour(date.getDay());
+                        date.setHours(hour, Math.floor(Math.random() * 60));
+                        
+                        // Choose canister count based on hotspot bias
+                        const canisterCount = this.weightedChoice(counts, hotspot.countBias);
+                        
+                        // Choose condition with area-specific bias
+                        const condition = this.getConditionForArea(hotspot.name, conditions);
+                        
+                        testData.push({
+                            id: idCounter++,
+                            lat: lat,
+                            lng: lng,
+                            location: `${lat.toFixed(6)}, ${lng.toFixed(6)}`,
+                            canisterCount: canisterCount,
+                            condition: condition,
+                            notes: this.generateContextualNote(hotspot.name, condition, canisterCount),
+                            photo: null,
+                            timestamp: date.toISOString(),
+                            date: date.toLocaleDateString()
+                        });
+                    }
+                });
 
-                // Generate Tower Hamlets data (60 sightings - major hotspot)
-                for (let i = 0; i < 60; i++) {
-                    const coord = towerHamletsCoords[i % towerHamletsCoords.length];
-                    const jitter = 0.002; // Small random offset
-                    const lat = coord[0] + (Math.random() - 0.5) * jitter;
-                    const lng = coord[1] + (Math.random() - 0.5) * jitter;
+                // Add scattered sightings across other London areas (50 random sightings)
+                const londonBounds = {
+                    north: 51.6723,
+                    south: 51.2867,
+                    east: 0.3340,
+                    west: -0.5103
+                };
+
+                for (let i = 0; i < 50; i++) {
+                    const lat = londonBounds.south + Math.random() * (londonBounds.north - londonBounds.south);
+                    const lng = londonBounds.west + Math.random() * (londonBounds.east - londonBounds.west);
                     
-                    const daysAgo = Math.floor(Math.random() * 30);
+                    const daysAgo = Math.floor(Math.random() * 60); // Longer time range for scattered data
                     const date = new Date();
                     date.setDate(date.getDate() - daysAgo);
+                    date.setHours(Math.floor(Math.random() * 24), Math.floor(Math.random() * 60));
                     
                     testData.push({
-                        id: Date.now() + i,
+                        id: idCounter++,
                         lat: lat,
                         lng: lng,
                         location: `${lat.toFixed(6)}, ${lng.toFixed(6)}`,
@@ -1117,37 +1246,133 @@
                     });
                 }
 
-                // Generate other London data (25 sightings)
-                for (let i = 0; i < 25; i++) {
-                    const coord = otherCoords[i % otherCoords.length];
-                    const jitter = 0.005;
-                    const lat = coord[0] + (Math.random() - 0.5) * jitter;
-                    const lng = coord[1] + (Math.random() - 0.5) * jitter;
-                    
-                    const daysAgo = Math.floor(Math.random() * 14);
-                    const date = new Date();
-                    date.setDate(date.getDate() - daysAgo);
-                    
-                    testData.push({
-                        id: Date.now() + i + 100,
-                        lat: lat,
-                        lng: lng,
-                        location: `${lat.toFixed(6)}, ${lng.toFixed(6)}`,
-                        canisterCount: counts[Math.floor(Math.random() * counts.length)],
-                        condition: conditions[Math.floor(Math.random() * conditions.length)],
-                        notes: this.generateRandomNote(),
-                        photo: null,
-                        timestamp: date.toISOString(),
-                        date: date.toLocaleDateString()
-                    });
-                }
-
+                console.log(`Generated ${testData.length} mock sightings across London`);
+                
                 this.sightings = testData;
                 this.filteredSightings = [...this.sightings];
-                this.saveSightings();
+                
+                // Add all markers
                 this.sightings.forEach(sighting => this.addMarker(sighting));
+                
+                // Update all UI components
                 this.updateRecentSightings();
                 this.updateMapVisualization();
+                this.updateStats();
+                this.updateCharts();
+                
+                // Save to localStorage
+                this.saveSightings();
+            }
+
+            generateRealisticDaysAgo() {
+                // More recent sightings are more likely
+                const random = Math.random();
+                if (random < 0.4) return Math.floor(Math.random() * 7); // 40% in last week
+                if (random < 0.7) return 7 + Math.floor(Math.random() * 14); // 30% in 2-3 weeks
+                return 21 + Math.floor(Math.random() * 30); // 30% in last month
+            }
+
+            generateRealisticHour(dayOfWeek) {
+                // Weekend patterns (Friday=5, Saturday=6, Sunday=0)
+                if (dayOfWeek === 5 || dayOfWeek === 6 || dayOfWeek === 0) {
+                    // More activity in evenings and late night on weekends
+                    const random = Math.random();
+                    if (random < 0.3) return 14 + Math.floor(Math.random() * 6); // 2-8 PM
+                    if (random < 0.6) return 20 + Math.floor(Math.random() * 4); // 8 PM - midnight
+                    if (random < 0.8) return Math.floor(Math.random() * 4); // midnight - 4 AM
+                    return Math.floor(Math.random() * 24); // any time
+                } else {
+                    // Weekday patterns - more evening activity
+                    const random = Math.random();
+                    if (random < 0.4) return 17 + Math.floor(Math.random() * 5); // 5-10 PM
+                    if (random < 0.6) return 12 + Math.floor(Math.random() * 5); // noon-5 PM
+                    return Math.floor(Math.random() * 24); // any time
+                }
+            }
+
+            weightedChoice(choices, weights) {
+                const random = Math.random();
+                let sum = 0;
+                for (let i = 0; i < weights.length; i++) {
+                    sum += weights[i];
+                    if (random <= sum) return choices[i];
+                }
+                return choices[choices.length - 1];
+            }
+
+            getConditionForArea(areaName, conditions) {
+                // Different areas have different condition patterns
+                const areaPatterns = {
+                    'Tower Hamlets': [0.4, 0.3, 0.2, 0.1], // More scattered/dumped
+                    'Camden': [0.3, 0.2, 0.3, 0.2], // Mixed, more near bins (tourist area)
+                    'Westminster': [0.2, 0.1, 0.5, 0.2], // More near bins (central)
+                    'Hackney': [0.45, 0.25, 0.2, 0.1], // More scattered
+                    'Southwark': [0.35, 0.25, 0.25, 0.15],
+                    'Lambeth': [0.4, 0.2, 0.25, 0.15],
+                    'Islington': [0.35, 0.2, 0.3, 0.15],
+                    'Newham': [0.4, 0.3, 0.2, 0.1],
+                    'Greenwich': [0.3, 0.2, 0.3, 0.2],
+                    'Wandsworth': [0.35, 0.15, 0.35, 0.15]
+                };
+                
+                const weights = areaPatterns[areaName] || [0.25, 0.25, 0.25, 0.25];
+                return this.weightedChoice(conditions, weights);
+            }
+
+            generateContextualNote(area, condition, count) {
+                const areaSpecificNotes = {
+                    'Tower Hamlets': [
+                        "Found near Canary Wharf station area",
+                        "Reported by local resident during morning walk",
+                        "High concentration near shopping areas",
+                        "Close to DLR station entrance"
+                    ],
+                    'Camden': [
+                        "Tourist area, mixed with other litter",
+                        "Near Camden Market, heavy foot traffic",
+                        "Found along canal towpath",
+                        "Close to music venues"
+                    ],
+                    'Westminster': [
+                        "Central London, near government buildings",
+                        "Tourist hotspot area",
+                        "Found near bus stops and tube stations",
+                        "Mixed with general street litter"
+                    ],
+                    'Hackney': [
+                        "Residential area sighting",
+                        "Near local parks and green spaces",
+                        "Reported during community clean-up",
+                        "Close to nightlife venues"
+                    ]
+                };
+
+                const conditionNotes = {
+                    'scattered': "Spread across wide area, individual canisters",
+                    'dumped': "Large pile, appears to be deliberate dumping",
+                    'binned': "Found near waste disposal area",
+                    'vehicle': "Concentrated near parking area"
+                };
+
+                const countNotes = {
+                    '1-5': "Small number of canisters",
+                    '6-10': "Moderate amount found",
+                    '11-20': "Significant quantity discovered",
+                    '20+': "Large scale dumping, concerning amount"
+                };
+
+                const specificNotes = areaSpecificNotes[area] || this.generateRandomNote().split(',');
+                const randomSpecific = specificNotes[Math.floor(Math.random() * specificNotes.length)];
+                
+                // 70% chance of having a note
+                if (Math.random() < 0.7) {
+                    const parts = [randomSpecific];
+                    if (Math.random() < 0.3) parts.push(conditionNotes[condition]);
+                    if (Math.random() < 0.2) parts.push(countNotes[count]);
+                    return parts.join('. ');
+                }
+                
+                return '';
             }
 
             generateRandomNote() {
